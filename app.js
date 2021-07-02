@@ -10,9 +10,11 @@ app.get('/', function (req, res) {
   console.log(`raspistill -o ${path.resolve(__dirname, 'image.jpg')}`)
   exec(`raspistill -o ${path.resolve(__dirname, 'image.jpg')}`, (err, stdout, stderr) => {
     if (err) {
-      // node couldn't execute the command
+      console.log("node couldn't execute the command")
       return;
     }
+
+    console.log('Success')
 
     res.writeHead(200, { "Content-Type": "image/jpg" });
 
