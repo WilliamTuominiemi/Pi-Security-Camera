@@ -14,8 +14,12 @@ servo1 = GPIO.PWM(11, 50)  # Pin 11, 50Hz
 
 servo1.start(0)
 
+currentAngle = 90
+rotationAmount = 30
+
 
 def SetAngle(angle):
+    print(angle)
     duty = angle / 18 + 2
     GPIO.output(11, True)
     servo1.ChangeDutyCycle(duty)
@@ -32,17 +36,33 @@ def home():
 @app.route('/right', methods=['GET'])
 def right():
     print('right')
-    SetAngle(30)
+    global currentAngle
+    if currentAngle > 0:
+        currentAngle -= rotationAmount
+        print(currentAngle)
+        SetAngle(currentAngle)
+
     # GPIO.cleanup()
     return "<h1>RIGHT</p>"
 
 
 @app.route('/left', methods=['GET'])
 def left():
+    global currentAngle
     print('left')
-    SetAngle(130)
-    # GPIO.cleanup()
+    if currentAngle < 180 - rotationAmount:
+        print('unfucky')
+        currentAngle += rotationAmount
+        print(currentAngle)
+        SetAngle(currentAngle)
+    elif currentAngle == (180 - rotationAmount):
+        print('fucky')
+        currentAngle = 180
+        print(currentAngle)
+        SetAngle(179)
     return "<h1>LEFT</p>"
 
+
+SetAngle(90)
 
 app.run()

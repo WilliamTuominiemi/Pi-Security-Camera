@@ -10,24 +10,24 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  const options = {
-    hostname: 'http://127.0.0.1:5000/',
-    method: 'GET'
-  }
+  // const options = {
+  //   hostname: 'http://127.0.0.1:5000/',
+  //   method: 'GET'
+  // }
 
-  const _req = https.request(options, _res => {
-    console.log(`statusCode: ${_res.statusCode}`)
+  // const _req = https.request(options, _res => {
+  //   console.log(`statusCode: ${_res.statusCode}`)
 
-    _res.on('data', d => {
-      process.stdout.write(d)
-    })
-  })
+  //   _res.on('data', d => {
+  //     process.stdout.write(d)
+  //   })
+  // })
 
-  _req.on('error', error => {
-    console.error(error)
-  })
+  // _req.on('error', error => {
+  //   console.error(error)
+  // })
 
-  _req.end()
+  // _req.end()
 
   res.render('index.ejs');
 })
