@@ -3,10 +3,11 @@ import time
 
 GPIO.setmode(GPIO.BOARD)
 
-GPIO.setup(11,GPIO.OUT)
-servo1 = GPIO.PWM(11,50) # Pin 11, 50Hz
+GPIO.setup(11, GPIO.OUT)
+servo1 = GPIO.PWM(11, 50)  # Pin 11, 50Hz
 
 servo1.start(0)
+
 
 def SetAngle(angle):
     duty = angle / 18 + 2
@@ -17,7 +18,6 @@ def SetAngle(angle):
     servo1.ChangeDutyCycle(0)
 
 
-SetAngle(0) 
+SetAngle(30)
 servo1.stop()
 GPIO.cleanup()
-
