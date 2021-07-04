@@ -1,3 +1,13 @@
 node_modules
 .env
+
 image.jpg
+**/*.jpg
+  
+# JPEG
+*.jpg
+*.jpeg
+*.jpe
+*.jif
+*.jfif
+*.jfi
