@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Security Camera</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #wrap {
+            width: 50%;
+            height: 50%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #scaled-frame {
+            width: 2600px;
+            height: 2000px;
+            border: 0px;
+        }
+
+        #scaled-frame {
+            zoom: 0.25;
+            -moz-transform: scale(0.25);
+            -moz-transform-origin: 0 0;
+            -o-transform: scale(0.25);
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale(0.25);
+            -webkit-transform-origin: 0 0;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            #scaled-frame {
+                zoom: 1;
+            }
+        }
+    </style>
+    <script>
+        const changeRotation = (param) => {
+            const request = fetch(`http://127.0.0.1:5000/${param}`, {
+                method: 'GET',
+                credentials: 'include',
+                mode: 'no-cors',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-type': 'application/json',
+                    'Access-Control-Allow-Credentials': true
+                }
+            })
+
+            request
+                .then(response => console.log(response))
+                .catch((error) => {
+                    console.error(error)
+                })
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>SECURITY CAMERA</h1>
+    <button onclick="changeRotation('left')">←</button>
+    <button onclick="changeRotation('right')">→</button>
+
+    <div id="wrap">
+        <iframe id="scaled-frame" src="http://192.168.100.14:3000/image"></iframe>
+    </div>
+
+
+
+</body>
+
+</html>
