@@ -3,7 +3,8 @@ node_modules
 
 image.jpg
 **/*.jpg
-  
+images
+
 # JPEG
 *.jpg
 *.jpeg
