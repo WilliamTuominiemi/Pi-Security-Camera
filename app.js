@@ -18,4 +18,4 @@ videoStream.acceptConnections(app, {
 );
 
 app.use(express.static(__dirname + '/public'));
-app.listen(port, () => console.log(`Example app listening on port ${port}! In your web browser, navigate to http://<IP_ADDRESS_OF_THIS_SERVER>:3000`));
+app.listen(3000, "0.0.0.0", () => console.log(`Example app listening on port ${port}! In your web browser, navigate to http://<IP_ADDRESS_OF_THIS_SERVER>:3000`));
