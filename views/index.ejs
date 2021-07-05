@@ -32,10 +32,15 @@
                 zoom: 1;
             }
         }
+
+        button {
+            width: 25%;
+            height: 50px;
+        }
     </style>
     <script>
         const changeRotation = (param) => {
-            const request = fetch(`http://127.0.0.1:5000/${param}`, {
+            const request = fetch(`http://192.168.100.14:5000/${param}`, {
                 method: 'GET',
                 credentials: 'include',
                 mode: 'no-cors',
