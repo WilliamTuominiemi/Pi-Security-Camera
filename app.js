@@ -6,47 +6,39 @@ const https = require('https')
 
 const app = express()
 
-app.use('/static', express.static(path.join(__dirname, 'public')))
-app.set('view engine', 'ejs');
+const port = 3000
 
-app.get('/', (req, res) => {
-  // const options = {
-  //   hostname: 'http://127.0.0.1:5000/',
-  //   method: 'GET'
-  // }
+// app.use('/static', express.static(path.join(__dirname, 'public')))
+// app.set('view engine', 'ejs');
 
-  // const _req = https.request(options, _res => {
-  //   console.log(`statusCode: ${_res.statusCode}`)
+// start capture
+const videoStream = require('./videoStream');
+videoStream.acceptConnections(app, {
+  width: 1280,
+  height: 720,
+  fps: 16,
+  encoding: 'JPEG',
+  quality: 7 // lower is faster, less quality
+},
+  '/stream.mjpg', true
+);
 
-  //   _res.on('data', d => {
-  //     process.stdout.write(d)
-  //   })
-  // })
+// app.get('/image', (req, res) => {
+//   console.log('request received')
+//   exec(`raspistill -o ${path.resolve(__dirname, 'images/image.jpg')}`, (err, stdout, stderr) => {
+//     if (err) {
+//       console.log("node couldn't execute the command")
+//       return;
+//     }
 
-  // _req.on('error', error => {
-  //   console.error(error)
-  // })
+//     console.log('Success')
 
-  // _req.end()
+//     res.writeHead(200, { "Content-Type": "image/jpg" });
 
-  res.render('index.ejs');
-})
+//     fs.createReadStream(path.resolve(__dirname, 'images/image.jpg'))
+//       .pipe(res);
+//   });
+// })
 
-app.get('/image', (req, res) => {
-  console.log('request received')
-  exec(`raspistill -o ${path.resolve(__dirname, 'images/image.jpg')}`, (err, stdout, stderr) => {
-    if (err) {
-      console.log("node couldn't execute the command")
-      return;
-    }
-
-    console.log('Success')
-
-    res.writeHead(200, { "Content-Type": "image/jpg" });
-
-    fs.createReadStream(path.resolve(__dirname, 'images/image.jpg'))
-      .pipe(res);
-  });
-})
-
-app.listen(3000)
+app.use(express.static(__dirname + '/public'));
+app.listen(port, () => console.log(`Example app listening on port ${port}! In your web browser, navigate to http://<IP_ADDRESS_OF_THIS_SERVER>:3000`));
