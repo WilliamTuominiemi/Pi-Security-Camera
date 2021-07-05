@@ -3,23 +3,16 @@
 
 <head>
     <title>Security Camera</title>
-    <style>
-        body {
-            text-align: center;
-        }
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module">
+        import config from './config.js'
 
-        img {
-            width: 75%;
-        }
+        window.IP = config.IP
+    </script>
 
-        button {
-            width: 25%;
-            height: 50px;
-        }
-    </style>
     <script>
         const changeRotation = (param) => {
-            const request = fetch(`http://192.168.100.14:5000/${param}`, {
+            const request = fetch(`http://${window.IP}:5000/${param}`, {
                 method: 'GET',
                 credentials: 'include',
                 mode: 'no-cors',
@@ -36,7 +29,6 @@
                     console.error(error)
                 })
         }
-
     </script>
 </head>
 

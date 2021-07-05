@@ -1,5 +1,6 @@
 node_modules
 .env
+.json
 
 image.jpg
 **/*.jpg
@@ -11,3 +12,5 @@ image.jpg
 *.jif
 *.jfif
 *.jfi
+
+config.js
