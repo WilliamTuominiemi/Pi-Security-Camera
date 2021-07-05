@@ -6,7 +6,7 @@ const app = express()
 
 const port = 3000
 
-const videoStream = require('./videoStream');
+const videoStream = require('./util/videoStream');
 videoStream.acceptConnections(app, {
   width: 1280,
   height: 720,
