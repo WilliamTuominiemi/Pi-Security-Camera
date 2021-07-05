@@ -1,3 +1,5 @@
+// STOLE ALL OF THI FROM SOMEONE
+
 let lastFrameObj = {
     lastFrame: null
 };

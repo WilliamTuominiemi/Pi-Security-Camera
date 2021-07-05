@@ -42,7 +42,6 @@ def right():
         print(currentAngle)
         SetAngle(currentAngle)
 
-    # GPIO.cleanup()
     return "<h1>RIGHT</p>"
 
 
