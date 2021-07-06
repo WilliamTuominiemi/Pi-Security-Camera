@@ -1,4 +1,4 @@
-// STOLE ALL OF THI FROM SOMEONE
+// STOLE ALL OF THIS FROM SOMEONE
 
 let lastFrameObj = {
     lastFrame: null
@@ -10,16 +10,6 @@ let videoStream = {
     },
     acceptConnections: function (expressApp, cameraOptions, resourcePath, isVerbose) {
         const raspberryPiCamera = require('raspberry-pi-camera-native');
-
-        if (!cameraOptions) {
-            cameraOptions = {
-                width: 1280,
-                height: 720,
-                fps: 16,
-                encoding: 'JPEG',
-                quality: 7
-            };
-        }
 
         // start capture
         raspberryPiCamera.start(cameraOptions);
