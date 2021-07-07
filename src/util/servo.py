@@ -4,7 +4,6 @@ import time
 
 # Setup app
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
 
 # Setup servo
 servoPort = 11
@@ -62,5 +61,4 @@ def left():
 SetAngle(currentAngle)
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host="0.0.0.0")
+    app.run(host='0.0.0.0', port=5000)
