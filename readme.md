@@ -22,6 +22,14 @@ Installed on Pi:
 - Python {path}/servo.py
 - Node {path}/app.js
 
+## Autostarting
+Node:
+- `sudo nano /etc/rc.local`
+- `node *path*/src/app.js` 
+
+Python:
+- `crontab -e`
+- `@reboot (/bin/sleep 10; /usr/bin/python *path*/src/util/servo.py  > /home/pi/cronjoblog 2>&1) `
 
 ## Author
 [@williamtuominiemi](https://www.github.com/williamtuominiemi)
