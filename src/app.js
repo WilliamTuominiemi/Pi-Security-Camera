@@ -18,4 +18,4 @@ videoStream.acceptConnections(app, {
 
 app.use(express.static(__dirname + '/public'))
 
-app.listen(3000, "0.0.0.0", () => console.log(`Listening on port ${port}`))
+app.listen(port, "0.0.0.0", () => console.log(`Listening on port ${port}`))
